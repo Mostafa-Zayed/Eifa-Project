@@ -15,6 +15,7 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('course_id');
             $table->string('name');
             $table->string('phone',50);
             $table->string('company');
@@ -23,6 +24,8 @@ class CreateReservationsTable extends Migration
             $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

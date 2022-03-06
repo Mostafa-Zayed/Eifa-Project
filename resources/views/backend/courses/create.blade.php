@@ -366,6 +366,7 @@
     <script>
 
         $(document).ready(function(){
+            $('.solution-trix-field-wrapper').find($('trix-editor')).css("min-height", "350px");
             $('.add-image').click(function(){
                 var id = $(this).attr('data-id');
                 appendImage(id);

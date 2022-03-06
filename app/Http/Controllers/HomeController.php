@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRegisterCourse;
 use App\Models\Course;
 use App\Models\Founder;
 use App\Models\Page;
 use App\Models\Partner;
+use App\Models\Reservation;
 use App\Models\Service;
 use App\Models\ServiceList;
-use Database\Seeders\CourseSeeder;
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -107,6 +109,38 @@ class HomeController extends Controller
 
     public function courseRegister(Request $request,$id)
     {
-        dd($request->all());
+        if ($course = Course::find($id)){
+
+            $validation = Validator::make($request->all(),
+                [
+                    'name' => 'required',
+                    'phone' => 'required',
+                    'company' => 'required',
+                    'email' => 'required'
+                ]
+            );
+            if ($validation->fails()){
+                $messages = $validation->messages();
+                foreach ($messages->all() as $message) {
+                    toastr()->error($message);
+                }
+                session()->flash('registerError',true);
+                return redirect()->back();
+            }
+
+            Reservation::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'company' => $request->company,
+                'course_id' => $course->id,
+                'note' => $request->note,
+                'status' => 0,
+            ]);
+
+            toastr()->success('Data has been Send Successfully');
+            return redirect()->back();
+        }
+
     }
 }
