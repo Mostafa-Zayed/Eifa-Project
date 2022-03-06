@@ -46,6 +46,6 @@
  *
  * Front = not done
  * add  = Done
- * edit = not done
+ * edit = Done
  * delete = Done
  */

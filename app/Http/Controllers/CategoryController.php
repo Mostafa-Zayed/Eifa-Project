@@ -74,7 +74,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('backend.categories.edit',['category' => $category]);
+        return view('backend.categories.edit',['category' => $category->toArray()]);
     }
 
     /**
@@ -86,7 +86,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'name.ar' => 'required',
+            'name.en' => 'required',
+            'status' => 'nullable'
+        ]);
 
+        $category->update($request->all());
+        toastr()->success('Data has been updated Successfully');
+        return redirect()->route('categories.edit',$category);
     }
 
     /**
