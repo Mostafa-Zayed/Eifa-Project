@@ -1,0 +1,54 @@
+body{
+    font-family: 'Cairo', sans-serif;
+}
+.header-body{
+    padding-block: 10px
+}
+.owl-carousel .owl-item a{
+    padding: 11px 50px !important;
+    border-radius: 10px;
+    font-size: 16px !important;
+    border: 0;
+}
+.custom-slider-container:after{
+    content: unset;
+}
+.boxes-sec{
+    margin-top: 40px;
+    background: #b59676;
+    padding: 25px 0;
+}
+.boxes-sec .box{
+    background: #fff;
+    padding: 25px;
+    border-radius: 52px 25px 25px 25px;
+}
+#footer .custom-row-footer {
+    padding-top: 80px !important;
+}
+#footer .footer-copyright {
+    padding: 20px 0;
+}
+#mainNav{
+    display: flex;
+    align-items: center
+}
+#header .header-nav.header-nav-links nav > ul:not(:hover) > li > a.active{
+    background: #b79877 !important;
+    border-radius: 30px !important;
+    color: #fff !important;
+}
+@media only screen and (min-width: 992px){
+    #header .header-nav-main nav > ul > li {
+         height: unset; 
+         align-self: unset;
+    }
+    #header .header-nav.header-nav-links nav > ul > li > a{
+        height: unset;
+        min-height: 40px;
+    }
+    #header .header-nav.header-nav-links:not(.header-nav-light-text) nav > ul > li > a{
+        color: #000;
+        font-weight: 600;
+    }
+}
