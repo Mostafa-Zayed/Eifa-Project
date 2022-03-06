@@ -46,7 +46,7 @@ Route::group(
     Route::post('/course/register/{id}',[HomeController::class,'courseRegister'])->name('course.register');
     Route::get('/partners',[HomeController::class,'partners'])->name('partners');
     Route::get('/contact-us',[HomeController::class,'contact'])->name('contact');
-
+    Route::get('/test',[HomeController::class,'tst']);
 
     Route::group([ 'prefix' => 'dashboard'],function(){
 
