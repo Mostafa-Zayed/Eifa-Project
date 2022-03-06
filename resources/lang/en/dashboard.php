@@ -63,6 +63,9 @@ return [
     'tran_courses' => 'Training courses',
     'course_reservation_title' => 'To apply for one of our training courses, enter your details in the registration form',
     'registration_form' => 'Registration Form',
+    'categories' => 'Categories',
+    'add_category' => 'Add Category',
+    'all_categories' => 'Add categories',
 
 
 ];

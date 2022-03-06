@@ -24,6 +24,14 @@
                     <li>
                         <a href="{{route('partners.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_partners'))}}</span></a>
                     </li>
+
+                    <li>
+                        <a href="{{route('categories.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_categories'))}}</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('reservations.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_reservations'))}}</span></a>
+                    </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ucwords(trans('dashboard.media'))}}</span></div>

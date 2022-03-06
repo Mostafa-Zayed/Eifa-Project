@@ -16,6 +16,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,6 +92,9 @@ Route::group(
 
         /* Services routes */
         Route::resource('services',ServiceController::class)->except(['show']);
+
+        /* Categories routes */
+        Route::resource('categories',CategoryController::class)->except(['show']);
     });
 
 });

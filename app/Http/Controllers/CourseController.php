@@ -99,7 +99,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('backend.courses.edit',[
+            'course' => $course->toArray()
+        ]);
     }
 
     /**
@@ -122,6 +124,8 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        toastr()->success('Course has been Deleted Successfully');
+        return redirect()->route('courses.index');
     }
 }

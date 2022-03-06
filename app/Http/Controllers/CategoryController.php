@@ -15,7 +15,9 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('backend.categories.index',['categories' => $categories]);
+        return view('backend.categories.index',[
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -46,8 +48,7 @@ class CategoryController extends Controller
             'name' =>  [
                 'en' => $request->name['en'],
                 'ar' => $request->name['ar']
-            ],
-            'status' => $request->status
+            ]
         ]);
 
         toastr()->success('Data has been saved successfully');
@@ -98,5 +99,6 @@ class CategoryController extends Controller
     {
         $category->delete();
         toastr()->success('Data has been deleted Successfully');
+        return redirect()->route('categories.index');
     }
 }

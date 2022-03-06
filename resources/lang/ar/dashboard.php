@@ -63,6 +63,10 @@ return [
     'tran_courses' => 'دوراتنا التدريبيه',
     'course_reservation_title' => 'للتقديم احد دوراتنا التدريبية ادخل بياناتك في استمارة التسجيل',
     'registration_form' => 'استمارة التسجيل',
+    'categories' => 'الاقسام',
+    'add_category' => 'اضف قسم',
+    'all_categories' => 'كل الاقسام',
+
 
 
 
