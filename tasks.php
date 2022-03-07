@@ -54,3 +54,8 @@
  * Contact us
  * Front = Done
  */
+
+/*
+ * Media
+ * Front = not done
+ */

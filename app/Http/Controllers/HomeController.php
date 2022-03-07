@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegisterCourse;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\Founder;
+use App\Models\Media;
 use App\Models\Message;
 use App\Models\Page;
 use App\Models\Partner;
@@ -171,5 +173,19 @@ class HomeController extends Controller
 
         toastr()->success('Your Message Send Successfully');
         return redirect()->route('contact');
+    }
+
+    public function media()
+    {
+        $pages = Page::all();
+        $settings = Setting::select('key','value')->pluck('value','key');
+        $media = Media::all();
+        $categories = Category::where('status',1)->get();
+        return view('frontend.media',[
+            'pages' => $pages,
+            'settings' => $settings,
+            'categories' => $categories,
+            'media' => $media
+        ]);
     }
 }

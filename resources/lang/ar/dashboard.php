@@ -66,6 +66,7 @@ return [
     'categories' => 'الاقسام',
     'add_category' => 'اضف قسم',
     'all_categories' => 'كل الاقسام',
+    'add_event' => 'اضف حدث',
 
 
 

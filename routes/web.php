@@ -48,7 +48,7 @@ Route::group(
     Route::get('/partners',[HomeController::class,'partners'])->name('partners');
     Route::get('/contact-us',[HomeController::class,'contact'])->name('contact');
     Route::post('/send/message',[HomeController::class,'sendMessage'])->name('send.message');
-
+    Route::get('category/show/{id}',[HomeController::class,'categoryMedia'])->name('category.media');
 
     Route::group([ 'prefix' => 'dashboard'],function(){
 

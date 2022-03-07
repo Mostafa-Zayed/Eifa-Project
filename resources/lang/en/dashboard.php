@@ -66,6 +66,6 @@ return [
     'categories' => 'Categories',
     'add_category' => 'Add Category',
     'all_categories' => 'Add categories',
-
+    'add_event' => 'add event',
 
 ];

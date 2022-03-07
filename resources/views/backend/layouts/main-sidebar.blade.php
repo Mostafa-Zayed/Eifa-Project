@@ -15,22 +15,26 @@
                         <a href="{{route('services.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.services'))}}</span> </a>
                     </li>
                     <li>
-                        <a href="{{route('courses.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_courses'))}}</span></a>
+                        <a href="{{route('courses.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.courses'))}}</span></a>
                     </li>
                     <li>
-                        <a href="{{route('founders.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_founders'))}}</span></a>
-                    </li>
-
-                    <li>
-                        <a href="{{route('partners.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_partners'))}}</span></a>
+                        <a href="{{route('founders.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.founders'))}}</span></a>
                     </li>
 
                     <li>
-                        <a href="{{route('categories.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_categories'))}}</span></a>
+                        <a href="{{route('partners.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.partners'))}}</span></a>
                     </li>
 
                     <li>
-                        <a href="{{route('reservations.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_reservations'))}}</span></a>
+                        <a href="{{route('categories.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.categories'))}}</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('reservations.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.reservations'))}}</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('media.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.media'))}}</span></a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
