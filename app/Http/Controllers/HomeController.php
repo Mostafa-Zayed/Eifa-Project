@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRegisterCourse;
 use App\Models\Course;
 use App\Models\Founder;
+use App\Models\Message;
 use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Reservation;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
+
     public function index()
     {
         $pages = Page::all();
@@ -142,5 +144,32 @@ class HomeController extends Controller
             return redirect()->back();
         }
 
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $validation = Validator::make($request->all(),[
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'message' => 'required'
+        ]);
+
+        if ($validation->fails()){
+            $messages = $validation->messages();
+            foreach ($messages->all() as $message) {
+                toastr()->error($message);
+            }
+            return redirect()->route('contact');
+        }
+        Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'status' => 'not-reading'
+        ]);
+
+        toastr()->success('Your Message Send Successfully');
+        return redirect()->route('contact');
     }
 }

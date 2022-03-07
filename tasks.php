@@ -49,3 +49,8 @@
  * edit = Done
  * delete = Done
  */
+
+/*
+ * Contact us
+ * Front = Done
+ */

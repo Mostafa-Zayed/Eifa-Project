@@ -85,7 +85,7 @@
     <div class="container py-5">
         <div class="row">
             <div class="col">
-                <form class="contact-form custom-form-style-1" action="{{route('contacts.store')}}" method="POST">
+                <form class="contact-form custom-form-style-1" action="{{route('send.message')}}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="form-group col-lg-6">
@@ -96,6 +96,9 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <input type="email" placeholder="E-Mail" class="form-control" name="email">
+                            @error('email')
+                            <span class="alert-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="row">
@@ -106,6 +109,9 @@
                     <div class="row">
                         <div class="form-group col">
                             <textarea placeholder="Your Message..."  rows="10" class="form-control" name="message"></textarea>
+                            @error('message')
+                            <span class="alert-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="row">
@@ -119,7 +125,11 @@
     </div>
 @include('frontend.includes.footer')
 @endsection
+
 @section('js')
+    @jquery
     @toastr_js
     @toastr_render
+    <script src="{{ URL::asset('assets/backend/js/toastr.js') }}"></script>
+
 @endsection
