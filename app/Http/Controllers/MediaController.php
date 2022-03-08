@@ -126,7 +126,9 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-        //
+        $media->delete();
+        toastr()->success('Data has been deleted successfully');
+        return redirect()->route('media.index');
     }
 
     private function getMonthName($myDate)

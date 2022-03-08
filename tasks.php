@@ -57,5 +57,8 @@
 
 /*
  * Media
- * Front = not done
+ * Front = Done
+ * add   = Done
+ * edit  = not done
+ * delete = Done
  */
