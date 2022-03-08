@@ -67,5 +67,7 @@ return [
     'add_category' => 'Add Category',
     'all_categories' => 'Add categories',
     'add_event' => 'add event',
+    'image' => 'Image',
+    'all_events' => 'All Events',
 
 ];

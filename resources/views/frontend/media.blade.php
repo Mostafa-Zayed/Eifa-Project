@@ -43,234 +43,236 @@
 
             <div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
                 <div class="row portfolio-list sort-destination" data-sort-id="portfolio">
-
-                    <div class="col-md-6 col-lg-4 isotope-item seminars">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
+                    @if(! empty($media) && $media->count() > 0)
+                        @foreach($media as $item)
+                            <div class="col-md-6 col-lg-4 isotope-item seminars">
+                                <div class="portfolio-item">
+                                    <a href="{{route('media.getInfo',$item->id)}}">
 										<span class="thumb-info thumb-info-lighten border-radius-0">
 											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-1.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
-
+												<img src="{{asset('assets/img/media/media-1.jpg')}}" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
 												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Seminars</span>
+													<span class="thumb-info-inner">{{ucwords($item->category->name)}}</span>
 												</span>
 												<span class="thumb-info-action">
 													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
 												</span>
 											</span>
 										</span>
-                            </a>
-                        </div>
-                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+{{--                    --}}
+{{--                    <div class="col-md-6 col-lg-4 isotope-item seminars">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-2.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item seminars">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-2.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Seminars</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Seminars</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item conferences">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-3.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item conferences">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-3.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Conferences</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Conferences</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item seminars">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-4.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item seminars">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-4.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Seminars</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Seminars</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item conferences">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-5.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item conferences">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-5.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Conferences</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Conferences</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item conferences">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-6.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item conferences">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-6.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Conferences</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Conferences</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item seminars">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-7.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item seminars">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-7.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Seminars</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Seminars</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item seminars">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-8.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item seminars">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-8.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Seminars</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Seminars</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item conferences">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-9.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item conferences">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-9.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Conferences</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Conferences</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item conferences">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-10.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item conferences">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-10.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Conferences</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Conferences</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item conferences">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-11.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item conferences">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-11.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Conferences</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Conferences</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6 col-lg-4 isotope-item conferences">--}}
+{{--                        <div class="portfolio-item">--}}
+{{--                            <a href="single-media.html">--}}
+{{--										<span class="thumb-info thumb-info-lighten border-radius-0">--}}
+{{--											<span class="thumb-info-wrapper border-radius-0">--}}
+{{--												<img src="img/media/media-12.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">--}}
 
-                    <div class="col-md-6 col-lg-4 isotope-item conferences">
-                        <div class="portfolio-item">
-                            <a href="single-media.html">
-										<span class="thumb-info thumb-info-lighten border-radius-0">
-											<span class="thumb-info-wrapper border-radius-0">
-												<img src="img/media/media-12.jpg" class="img-fluid border-radius-0" alt="" style="width:390px;height:290px;">
-
-												<span class="thumb-info-title">
-													<span class="thumb-info-inner">Conferences</span>
-												</span>
-												<span class="thumb-info-action">
-													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-												</span>
-											</span>
-										</span>
-                            </a>
-                        </div>
-                    </div>
+{{--												<span class="thumb-info-title">--}}
+{{--													<span class="thumb-info-inner">Conferences</span>--}}
+{{--												</span>--}}
+{{--												<span class="thumb-info-action">--}}
+{{--													<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>--}}
+{{--												</span>--}}
+{{--											</span>--}}
+{{--										</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                 </div>
             </div>

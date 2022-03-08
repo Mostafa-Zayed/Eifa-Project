@@ -67,7 +67,8 @@ return [
     'add_category' => 'اضف قسم',
     'all_categories' => 'كل الاقسام',
     'add_event' => 'اضف حدث',
-
+    'image' => 'صوره',
+    'all_events' => 'كل الاحداث',
 
 
 

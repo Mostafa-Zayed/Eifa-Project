@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Media;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MediaController extends Controller
 {
@@ -15,7 +18,9 @@ class MediaController extends Controller
     public function index()
     {
         $media = Media::all();
+        $categories = Category::all();
         return view('backend.media.index',[
+            'categories' => $categories,
             'media' => $media
         ]);
     }
@@ -27,7 +32,7 @@ class MediaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -38,7 +43,45 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = Validator::make($request->all(),[
+            'name.ar' => 'required',
+            'name.en' => 'required',
+            'description.ar' => 'required',
+            'description.en' => 'required',
+            'category_id' => 'required',
+            'date' => 'required',
+            'location.ar' => 'required',
+            'location.en' => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $messages = $validation->messages();
+            foreach ($messages->all() as $message) {
+                toastr()->error($message);
+                session()->flash('hasError',true);
+                return redirect()->route('media.index');
+            }
+        }
+
+        Media::create([
+            'name' => [
+                'en' => $request->name['en'],
+                'ar' => $request->name['ar']
+            ],
+            'description' => [
+                'en' => $request->description['en'],
+                'ar' => $request->description['ar']
+            ],
+            'date' => $request->date,
+            'location' => [
+                'en' => $request->location['en'],
+                'ar' => $request->location['ar']
+            ],
+            'category_id' => $request->category_id,
+        ]);
+
+        toastr()->success('Data has been save successfully');
+        return redirect()->route('media.index');
     }
 
     /**
@@ -84,5 +127,15 @@ class MediaController extends Controller
     public function destroy(Media $media)
     {
         //
+    }
+
+    private function getMonthName($myDate)
+    {
+        $date = Carbon::createFromFormat('m/d/Y', $myDate);
+
+        $monthName = $date->format('F');
+
+        return $monthName;
+
     }
 }

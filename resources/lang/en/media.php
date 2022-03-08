@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'name' => 'name',
+    'description' => 'description',
     'name_ar' => 'name arabic',
     'name_en' => 'name english',
     'description_ar' => 'description arabic',

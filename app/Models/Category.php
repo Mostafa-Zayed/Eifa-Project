@@ -17,4 +17,9 @@ class Category extends Model
     protected $fillable = ['name','status'];
 
     public $translatable = ['name'];
+
+    public function media(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Media::class,'category_id','id');
+    }
 }

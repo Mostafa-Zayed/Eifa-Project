@@ -1,13 +1,14 @@
 <?php
 
 return [
-    'name_ar' => '',
-    'name_en' => '',
-    'description_ar' => '',
-    'description_en' => '',
-    'location_ar' => '',
-    'location_en' => '',
-    'date_ar' => '',
-    'date_en' => '',
-    'category' => '',
+    'name' => 'الاسم',
+    'description' => 'الوصف',
+    'name_ar' => 'الاسم عربي',
+    'name_en' => 'الاسم انجليزي',
+    'description_ar' => 'وصف عربي',
+    'description_en' => 'وصف انجليزي',
+    'location_ar' => 'المكان عربي',
+    'location_en' => 'المكان انجليزي',
+    'date' => 'التاريخ',
+    'category' => 'القسم',
 ];

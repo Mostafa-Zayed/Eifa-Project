@@ -19,7 +19,7 @@ class CreateMediaTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('location')->nullable();
-            $table->date('date')->nullable();
+            $table->string('date')->nullable();
             $table->string('image')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

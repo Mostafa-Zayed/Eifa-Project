@@ -179,7 +179,7 @@ class HomeController extends Controller
     {
         $pages = Page::all();
         $settings = Setting::select('key','value')->pluck('value','key');
-        $media = Media::all();
+        $media = Media::with(['category'])->get();
         $categories = Category::where('status',1)->get();
         return view('frontend.media',[
             'pages' => $pages,

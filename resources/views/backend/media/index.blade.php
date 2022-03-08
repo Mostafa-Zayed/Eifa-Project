@@ -1,5 +1,6 @@
 @extends('backend.layouts.master')
 @section('css')
+    <link href="{{asset('assets/backend/css/bootstrap-datepicker.min.css')}}">
     @toastr_css
 @section('title')
     {{trans('dashboard.media')}}
@@ -18,7 +19,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                     <li class="breadcrumb-item"><a href="{{route('dashboard.index')}}" class="default-color">{{trans('dashboard.index')}}</a></li>
-                    <li class="breadcrumb-item active">{{ucwords(trans('dashboard.all_media'))}}</li>
+                    <li class="breadcrumb-item active">{{ucwords(trans('dashboard.all_events'))}}</li>
                 </ol>
             </div>
         </div>
@@ -34,9 +35,9 @@
                         <table id="datatable" class="table table-striped table-bordered p-0">
                             <thead>
                             <tr>
-                                <th>image</th>
-                                <th>{{trans('courses.name')}}</th>
-                                <th>{{trans('courses.description')}}</th>
+                                <th>{{ucfirst(trans('media.name'))}}</th>
+                                <th>{{ucfirst(trans('media.description'))}}</th>
+                                <th>{{ucfirst(trans('media.date'))}}</th>
                                 <th>{{trans('dashboard.status')}}</th>
                                 <th>{{ucwords(trans('dashboard.show'))}}</th>
                                 <th>{{ucwords(trans('dashboard.edit'))}}</th>
@@ -44,22 +45,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {{--
-                            @if(! empty($courses) && $courses->count() > 0)
-                                @foreach($courses as $course)
+                            @if(! empty($media) && $media->count() > 0)
+                                @foreach($media as $item)
                                     <tr>
-                                        <td>{{ $course->name }}</td>
-                                        <td>{{$course->description}}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{$item->description}}</td>
+                                        <td>{{$item->date}}</td>
                                         <td>
-                                            @if($course->status == 1)
-                                                <button type="button" class="btn btn-danger" data-id="{{$course->id}}">Not Active</button>
+                                            @if($item->status == 1)
+                                                <button type="button" class="btn btn-danger" data-id="{{$item->id}}">Not Active</button>
                                             @else
-                                                <button type="button" class="btn btn-success" data-id="{{$course->id}}">Active</button>
+                                                <button type="button" class="btn btn-success" data-id="{{$item->id}}">Active</button>
                                             @endif
                                         </td>
-                                        <td><a class="btn btn-warning" href="{{route('courses.edit',$course->id)}}">Edit</a> </td>
+                                        <td><a class="btn btn-warning" href="{{route('media.edit',$item->id)}}">Edit</a> </td>
                                         <td>
-                                            <form action="{{route('courses.destroy',$course->id)}}" method="POST">
+                                            <form action="{{route('media.destroy',$item->id)}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="submit" value="Delete" class="btn btn-danger">
@@ -68,13 +69,12 @@
                                     </tr>
                                 @endforeach
                             @endif
-                            --}}
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th>image</th>
-                                <th>{{trans('courses.name')}}</th>
-                                <th>{{trans('courses.description')}}</th>
+                                <th>{{trans('media.name')}}</th>
+                                <th>{{trans('media.description')}}</th>
                                 <th>{{trans('dashboard.status')}}</th>
                                 <th>{{ucwords(trans('dashboard.show'))}}</th>
                                 <th>{{ucwords(trans('dashboard.edit'))}}</th>
@@ -132,16 +132,59 @@
                                 @enderror
                             </div>
                         </div>
+                        <br>
                         <div class="row">
                             <div class="col">
-                                <label class="mr-sm-2">{{ucwords(trans('dashboard.order'))}}</label>
-                                <input type="number" class="form-control" name="order" value="{{old('order')}}">
-                                @error('order')
+                                <label class="mr-sm-2">{{ucwords(trans('dashboard.image'))}}</label>
+                                <input type="file" name="image" class="form-control">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label for="location_en">{{ucwords(trans('media.location_en'))}} :</label>
+                                <input type="text" name="location[en]" id="location_en" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label for="location_ar">{{ucwords(trans('media.location_ar'))}} :</label>
+                                <input type="text" name="location[ar]" id="location_ar" class="form-control" value="{{old('location.ar')}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="date">{{ucwords(trans('media.date'))}} :</label>
+                                <input type="text" data-provide="datepicker" class="form-control" name="date">
+                            </div>
+                        </div>
+                        <br>
+                        @if(! empty($categories) && $categories->count() > 0)
+                        <div class="row">
+                            <div class="col">
+                                <label class="mr-sm-2">{{ucwords(trans('media.category'))}}</label>
+                                <select class="form-control" name="category_id">
+                                    @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{ucwords($category->name)}}</option>
+                                    @endforeach
+                                </select>
+                                @error('status')
                                 <span class="alert-danger">{{$message}}</span>
                                 @enderror
                             </div>
                         </div>
-
+                        @endif
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label class="mr-sm-2">{{ucwords(trans('dashboard.status'))}}</label>
+                                <select class="form-control" name="status">
+                                    <option value="1" selected>{{ucwords(trans('dashboard.active'))}}</option>
+                                    <option value="0">{{ucwords(trans('dashboard.not_active'))}}</option>
+                                </select>
+                                @error('status')
+                                <span class="alert-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ucwords(trans('dashboard.cancel'))}}</button>
@@ -153,15 +196,15 @@
     </div>
 @endsection
 @section('js')
-
+    <script src='{{asset("assets/js/bootstrap-datepicker.min.js")}}' type='text/javascript'></script>
     @toastr_js
     @toastr_render
     <script>
         function openModelWithErrors() {
-            let isSessionHasError = "{{session()->has('errors')}}";
+            let isSessionHasError = "{{session()->has('hasError')}}";
             if (isSessionHasError == 1) {
-                let addPageModal = $('#addPageModal');
-                addPageModal.modal('show');
+                let addMediaModal = $('#addMediaModal');
+                addMediaModal.modal('show');
             }
         }
         openModelWithErrors();
