@@ -50,6 +50,8 @@ Route::group(
     Route::post('/send/message',[HomeController::class,'sendMessage'])->name('send.message');
     Route::get('category/show/{id}',[HomeController::class,'categoryMedia'])->name('category.media');
     Route::get('/media/{id}',[HomeController::class,'getMedia'])->name('media.getInfo');
+    Route::get('/registration',[HomeController::class,'registration'])->name('registration');
+    Route::post('/register',[HomeController::class,'makeRegister'])->name('makeRegister');
     Route::group([ 'prefix' => 'dashboard'],function(){
 
         /* dashboard routes */

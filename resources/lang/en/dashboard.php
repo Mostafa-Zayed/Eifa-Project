@@ -69,5 +69,6 @@ return [
     'add_event' => 'add event',
     'image' => 'Image',
     'all_events' => 'All Events',
+    'registration' => 'registration form'
 
 ];

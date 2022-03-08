@@ -69,7 +69,7 @@ return [
     'add_event' => 'اضف حدث',
     'image' => 'صوره',
     'all_events' => 'كل الاحداث',
-
+    'registration' => 'استماره تسجيل',
 
 
 

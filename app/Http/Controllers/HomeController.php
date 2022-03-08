@@ -188,4 +188,14 @@ class HomeController extends Controller
             'media' => $media
         ]);
     }
+
+    public function registration()
+    {
+        $pages = Page::all();
+        $settings = Setting::select('key','value')->pluck('value','key');
+        return view('frontend.registration',[
+            'pages' => $pages,
+            'settings' => $settings
+        ]);
+    }
 }
