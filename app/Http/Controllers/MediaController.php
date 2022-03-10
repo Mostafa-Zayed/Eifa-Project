@@ -81,7 +81,7 @@ class MediaController extends Controller
         ]);
 
         toastr()->success('Data has been save successfully');
-        return redirect()->route('media.index');
+        return redirect()->route('medias.index');
     }
 
     /**
@@ -103,7 +103,13 @@ class MediaController extends Controller
      */
     public function edit(Media $media)
     {
-        //
+        $categories = Category::all();
+
+        return view('backend.media.edit',[
+            'media' => $media->toArray(),
+            'mediaDate' => $media->getAttributes()['date'],
+            'categories' => $categories
+            ]);
     }
 
     /**
@@ -115,7 +121,37 @@ class MediaController extends Controller
      */
     public function update(Request $request, Media $media)
     {
-        //
+//        dd($request->all());
+        $validation = Validator::make($request->all(),[
+            'name.ar' => 'required',
+            'name.en' => 'required',
+            'description.ar' => 'required',
+            'description.en' => 'required',
+            'category_id' => 'required',
+            'date' => 'required',
+            'location.ar' => 'required',
+            'location.en' => 'required',
+            'status' => 'required|in:0,1'
+        ]);
+
+        $media->update([
+            'name' => [
+                'en' => $request->name['en'],
+                'ar' => $request->name['ar']
+            ],
+            'description' => [
+                'en' => $request->description['en'],
+                'ar' => $request->description['ar']
+            ],
+            'date' => $request->date,
+            'location' => [
+                'en' => $request->location['en'],
+                'ar' => $request->location['ar']
+            ],
+            'category_id' => $request->category_id,
+            'status' => $request->status
+        ]);
+        return redirect()->route('medias.edit',[$media->id]);
     }
 
     /**
@@ -126,9 +162,11 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-        $media->delete();
-        toastr()->success('Data has been deleted successfully');
-        return redirect()->route('media.index');
+           $media->delete();
+           toastr()->success('Data has been deleted successfully');
+           return redirect()->route('medias.index');
+
+
     }
 
     private function getMonthName($myDate)

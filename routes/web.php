@@ -67,7 +67,7 @@ Route::group(
         Route::resource('courses',CourseController::class);
 
         /* Media routes */
-        Route::resource('media',MediaController::class);
+        Route::resource('medias',MediaController::class);
 
         /* Articles routes */
         Route::resource('articles',ArticleController::class);

@@ -34,8 +34,9 @@
                     </li>
 
                     <li>
-                        <a href="{{route('media.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.media'))}}</span></a>
+                        <a href="{{route('medias.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.media'))}}</span></a>
                     </li>
+                    {{--
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ucwords(trans('dashboard.media'))}}</span></div>
@@ -114,7 +115,7 @@
                     <li>
                         <a href="{{route('contacts.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.contact'))}}</span> </a>
                     </li>
-
+--}}
 
                 </ul>
             </div>

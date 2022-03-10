@@ -59,6 +59,9 @@
  * Media
  * Front = Done
  * add   = Done
- * edit  = not done
+ * edit  = Done
  * delete = Done
+ * Image  = not done
  */
+
+

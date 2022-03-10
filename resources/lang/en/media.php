@@ -9,7 +9,6 @@ return [
     'description_en' => 'description english',
     'location_ar' => 'location arabic',
     'location_en' => 'location english',
-    'date_ar' => 'date arabic',
-    'date_en' => 'date english',
+    'date' => 'date',
     'category' => 'category',
 ];

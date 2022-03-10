@@ -25,7 +25,7 @@ class CreateMediaTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('no action');
         });
     }
 

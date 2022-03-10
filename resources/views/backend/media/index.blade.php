@@ -51,6 +51,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{$item->description}}</td>
                                         <td>{{$item->date}}</td>
+
                                         <td>
                                             @if($item->status == 1)
                                                 <button type="button" class="btn btn-danger" data-id="{{$item->id}}">Not Active</button>
@@ -58,9 +59,9 @@
                                                 <button type="button" class="btn btn-success" data-id="{{$item->id}}">Active</button>
                                             @endif
                                         </td>
-                                        <td><a class="btn btn-warning" href="{{route('media.edit',$item->id)}}">Edit</a> </td>
+                                        <td><a class="btn btn-warning" href="{{route('medias.edit',$item->id)}}">Edit</a> </td>
                                         <td>
-                                            <form action="{{route('media.destroy',$item->id)}}" method="POST">
+                                            <form action="{{route('medias.destroy',$item->id)}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <input type="submit" value="Delete" class="btn btn-danger">
@@ -72,7 +73,6 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>image</th>
                                 <th>{{trans('media.name')}}</th>
                                 <th>{{trans('media.description')}}</th>
                                 <th>{{trans('dashboard.status')}}</th>
@@ -97,7 +97,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('media.store')}}" method="POST">
+                <form action="{{route('medias.store')}}" method="POST">
                     <div class="modal-body">
                         @csrf
                         <div class="row">
@@ -116,6 +116,7 @@
                                 @enderror
                             </div>
                         </div>
+                        {{--
                         <div class="row">
                             <div class="col">
                                 <label for="description_ar">{{ucwords(trans('media.description_ar'))}}</label>
@@ -157,6 +158,7 @@
                             </div>
                         </div>
                         <br>
+                        {{--
                         @if(! empty($categories) && $categories->count() > 0)
                         <div class="row">
                             <div class="col">
@@ -173,6 +175,7 @@
                         </div>
                         @endif
                         <br>
+                        {{--
                         <div class="row">
                             <div class="col">
                                 <label class="mr-sm-2">{{ucwords(trans('dashboard.status'))}}</label>
@@ -185,6 +188,7 @@
                                 @enderror
                             </div>
                         </div>
+                        --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ucwords(trans('dashboard.cancel'))}}</button>
