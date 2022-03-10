@@ -52,6 +52,8 @@ Route::group(
     Route::get('/media/{id}',[HomeController::class,'getMedia'])->name('media.getInfo');
     Route::get('/registration',[HomeController::class,'registration'])->name('registration');
     Route::post('/register',[HomeController::class,'makeRegister'])->name('makeRegister');
+
+    Route::get('/article/{id}',[HomeController::class,'getArticle'])->name('getArticle');
     Route::group([ 'prefix' => 'dashboard'],function(){
 
         /* dashboard routes */

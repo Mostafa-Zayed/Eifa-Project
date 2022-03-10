@@ -16,6 +16,7 @@ use App\Models\ServiceList;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Article;
 
 class HomeController extends Controller
 {
@@ -197,5 +198,23 @@ class HomeController extends Controller
             'pages' => $pages,
             'settings' => $settings
         ]);
+    }
+
+    public function blogs()
+    {
+
+        $pages = Page::all();
+        $settings = Setting::select('key','value')->pluck('value','key');
+        $articles = Article::where('status',1)->simplePaginate(1);
+        return view('frontend.blogs',[
+            'pages' => $pages,
+            'settings' => $settings,
+            'articles' => $articles
+        ]);
+    }
+
+    public function getArticle($id)
+    {
+        dd($id);
     }
 }

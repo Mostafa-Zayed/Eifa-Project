@@ -70,7 +70,8 @@ return [
     'image' => 'صوره',
     'all_events' => 'كل الاحداث',
     'registration' => 'استماره تسجيل',
-
+    'blogs' => 'مقالات',
+    'read_more' => 'اقرء المزيد'
 
 
 

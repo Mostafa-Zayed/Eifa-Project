@@ -41,6 +41,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $validation = Validator::make($request->all(),[
             'title.en' => 'required',
             'title.ar' => 'required',
@@ -48,7 +49,8 @@ class ArticleController extends Controller
             'description.en' => 'required',
             'author.ar' => 'required',
             'author.en' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'image' => "required|"
         ]);
 
         if ($validation->fails()) {
@@ -59,6 +61,11 @@ class ArticleController extends Controller
             return redirect()->route('articles.create');
         }
 
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $imageNme = rand(0,1254789562).time().".".$file->getClientOriginalExtension();
+            $file->move(public_path('/uploads/articles'),$imageNme);
+        }
 
         Article::create([
             'title' => [
@@ -74,7 +81,7 @@ class ArticleController extends Controller
                 'ar' => $request->author['ar']
             ],
             'date' => $request->date,
-            'image' => 'image',
+            'image' => $imageNme,
             'category_id' => $request->category_id,
             'status' => $request->status
         ]);
