@@ -44,8 +44,8 @@ class ArticleController extends Controller
         $validation = Validator::make($request->all(),[
             'title.en' => 'required',
             'title.ar' => 'required',
-            'content.ar' => 'required',
-            'content.en' => 'required',
+            'description.ar' => 'required',
+            'description.en' => 'required',
             'author.ar' => 'required',
             'author.en' => 'required',
             'category_id' => 'required'
@@ -59,6 +59,7 @@ class ArticleController extends Controller
             return redirect()->route('articles.create');
         }
 
+
         Article::create([
             'title' => [
                 'en' => $request->title['en'],
@@ -70,10 +71,11 @@ class ArticleController extends Controller
             ],
             'author' => [
                 'en' => $request->author['en'],
-                'ar' => $request->autor['ar']
+                'ar' => $request->author['ar']
             ],
             'date' => $request->date,
             'image' => 'image',
+            'category_id' => $request->category_id,
             'status' => $request->status
         ]);
 
