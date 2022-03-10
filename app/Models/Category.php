@@ -22,4 +22,9 @@ class Category extends Model
     {
         return $this->hasMany(Media::class,'category_id','id');
     }
+
+    public function articles(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Article::class,'category_id','id');
+    }
 }

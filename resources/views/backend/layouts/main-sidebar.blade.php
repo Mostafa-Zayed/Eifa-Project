@@ -36,31 +36,11 @@
                     <li>
                         <a href="{{route('medias.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.media'))}}</span></a>
                     </li>
+
+                    <li>
+                        <a href="{{route('articles.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ucwords(trans('dashboard.all_articles'))}}</a> </li>
+                    </li>
                     {{--
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ucwords(trans('dashboard.media'))}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="font-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('media.index')}}">{{ucwords(trans('dashboard.all_media'))}}</a> </li>
-                            <li> <a href="{{route('media.create')}}">{{ucwords(trans('dashboard.add_media'))}}</a> </li>
-                        </ul>
-                    </li>
-                    <!-- menu item Form-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Form">
-                            <div class="pull-left"><i class="ti-files"></i><span class="right-nav-text">{{ucwords(trans('dashboard.articles'))}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Form" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('articles.index')}}">{{ucwords(trans('dashboard.all_articles'))}}</a> </li>
-                            <li> <a href="{{route('articles.create')}}">{{ucwords(trans('dashboard.add_article'))}}</a> </li>
-                        </ul>
-                    </li>
-                    <!-- menu item table -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#table">
                             <div class="pull-left"><i class="ti-layout-tab-window"></i><span class="right-nav-text">{{ucwords(trans('dashboard.founders'))}}</span></div>

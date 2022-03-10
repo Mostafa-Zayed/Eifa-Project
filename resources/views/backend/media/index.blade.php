@@ -116,7 +116,7 @@
                                 @enderror
                             </div>
                         </div>
-                        {{--
+
                         <div class="row">
                             <div class="col">
                                 <label for="description_ar">{{ucwords(trans('media.description_ar'))}}</label>
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                         <br>
-                        {{--
+
                         @if(! empty($categories) && $categories->count() > 0)
                         <div class="row">
                             <div class="col">
@@ -175,7 +175,7 @@
                         </div>
                         @endif
                         <br>
-                        {{--
+
                         <div class="row">
                             <div class="col">
                                 <label class="mr-sm-2">{{ucwords(trans('dashboard.status'))}}</label>
@@ -188,7 +188,7 @@
                                 @enderror
                             </div>
                         </div>
-                        --}}
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ucwords(trans('dashboard.cancel'))}}</button>

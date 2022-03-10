@@ -44,7 +44,7 @@
 /*
  * Categories
  *
- * Front = not done
+ * Front = Done
  * add  = Done
  * edit = Done
  * delete = Done
@@ -62,6 +62,21 @@
  * edit  = Done
  * delete = Done
  * Image  = not done
+ */
+
+/*
+ * Articles
+ * Front = not done
+ * add  = Done
+ */
+
+
+/*
+ * Settings
+ * Front = Done
+ * add   = Done
+ * edit  = not done
+ * delete = Done
  */
 
 

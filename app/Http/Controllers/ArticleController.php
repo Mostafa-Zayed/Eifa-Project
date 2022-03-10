@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
 {
@@ -14,7 +16,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::all();
+        return view('backend.articles.index',[
+            'articles' => $articles
+        ]);
     }
 
     /**
@@ -24,7 +29,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('backend.articles.create',['categories' => $categories]);
     }
 
     /**
@@ -35,7 +41,44 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = Validator::make($request->all(),[
+            'title.en' => 'required',
+            'title.ar' => 'required',
+            'content.ar' => 'required',
+            'content.en' => 'required',
+            'author.ar' => 'required',
+            'author.en' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            $messages = $validation->messages();
+            foreach ($messages->all() as $message) {
+                toastr()->error($message);
+            }
+            return redirect()->route('articles.create');
+        }
+
+        Article::create([
+            'title' => [
+                'en' => $request->title['en'],
+                'ar' => $request->title['ar']
+            ],
+            'description' => [
+                'en' => $request->description['en'],
+                'ar' => $request->description['ar']
+            ],
+            'author' => [
+                'en' => $request->author['en'],
+                'ar' => $request->autor['ar']
+            ],
+            'date' => $request->date,
+            'image' => 'image',
+            'status' => $request->status
+        ]);
+
+        toastr()->success('Data has been saved successfully');
+        return redirect()->route('articles.index');
     }
 
     /**

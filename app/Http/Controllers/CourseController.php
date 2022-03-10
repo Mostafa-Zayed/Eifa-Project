@@ -38,7 +38,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
+        dd($request->all());
         $request->validate([
             'name.en' => 'required',
             'name.ar' => 'required',

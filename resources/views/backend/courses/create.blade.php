@@ -13,7 +13,6 @@
 @stop
 @endsection
 @section('page-header')
-    <!-- breadcrumb -->
     <div class="page-title">
         <div class="row">
             <div class="col-sm-12">
@@ -24,10 +23,8 @@
             </div>
         </div>
     </div>
-    <!-- breadcrumb -->
 @endsection
 @section('content')
-    <!-- row -->
     <div class="row">
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
