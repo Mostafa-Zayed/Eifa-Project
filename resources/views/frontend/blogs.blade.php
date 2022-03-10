@@ -43,28 +43,13 @@
 
                     @endif
 
-{{--                    <article>--}}
-{{--                        <div class="card border-0 border-radius-0 mb-5 box-shadow-1">--}}
-{{--                            <div class="card-body p-4 z-index-1">--}}
-{{--                                <a href="blog.html">--}}
-{{--                                    <img class="card-img-top border-radius-0" src="img/eifa/partners-1.jpeg" alt="Card Image">--}}
-{{--                                </a>--}}
-{{--                                <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><time pubdate datetime="2021-01-10">10 January 2021</time> <span class="opacity-3 d-inline-block px-2">|</span> 3 Comments <span class="opacity-3 d-inline-block px-2">|</span>author name</p>--}}
-{{--                                <div class="card-body p-0">--}}
-{{--                                    <h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="blog.html">About international trade</a></h4>--}}
-{{--                                    <p class="card-text mb-3"> The Islamic financial industry has contributed in the field of international trade finance to the development of a number of innovative financial products that are compatible with the provisions of Islamic Sharia, and it has set a number of controls on modern applications in line with the nature and characteristics of Islamic banking.</p>--}}
-{{--                                    <a href="blog.html" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Read More +</a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </article>--}}
-
                     <ul class="pagination pagination-rounded pagination-lg justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                        {{$articles->links()}}
+{{--                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>--}}
+{{--                        <li class="page-item active"><a class="page-link" href="#">1</a></li>--}}
+{{--                        <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+{{--                        <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>--}}
                     </ul>
 
                 </div>

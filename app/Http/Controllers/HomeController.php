@@ -205,7 +205,7 @@ class HomeController extends Controller
 
         $pages = Page::all();
         $settings = Setting::select('key','value')->pluck('value','key');
-        $articles = Article::where('status',1)->simplePaginate(1);
+        $articles = Article::where('status',1)->simplePaginate(5);
         return view('frontend.blogs',[
             'pages' => $pages,
             'settings' => $settings,
