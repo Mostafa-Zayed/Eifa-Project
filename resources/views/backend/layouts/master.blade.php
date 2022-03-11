@@ -56,5 +56,28 @@
     @include('backend.layouts.footer-scripts')
 
 </body>
+<script>
 
+        function changeStatus(e,modelName)
+        {
+            const id = $(e).attr('data-id');
+            const status = $(e).attr('data-value');
+            const token = "{{csrf_token()}}";
+
+            if (id.length > 0) {
+                $.ajax({
+                    url:"{{route('change.status')}}",
+                    type: "POST",
+                    data: {id:id,model:modelName,status: status,_token:token},
+                    success: function(result){
+                        if(result.data == 'success'){
+                            location.reload();
+                        }
+
+                    }
+                });
+            }
+        }
+
+</script>
 </html>

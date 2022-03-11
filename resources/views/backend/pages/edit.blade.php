@@ -73,8 +73,21 @@
                                 </div>
                                 <div class="col">
                                     <label class="mr-sm-2">{{ucwords(trans('dashboard.url'))}}</label>
-                                    <input type="text" class="form-control" name="url" value="{{$page['url']}}">
+                                    <input type="text" class="form-control" name="url" value="{{$page['url']}}" disabled>
                                     @error('url')
+                                    <span class="alert-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="mr-sm-2">{{ucwords(trans('dashboard.status'))}}</label>
+                                    <select class="form-control form-control-lg" name="status">
+                                        <option value="1" @if($page['status'] == 1) selected @endif>{{ucwords(trans('dashboard.active'))}}</option>
+                                        <option value="0" @if($page['status'] == 0) selected @endif>{{ucwords(trans('dashboard.not_active'))}}</option>
+                                    </select>
+                                    @error('status')
                                     <span class="alert-danger">{{$message}}</span>
                                     @enderror
                                 </div>

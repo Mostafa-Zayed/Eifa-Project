@@ -20,7 +20,7 @@ class CreatePagesTable extends Migration
             $table->text('description')->nullable();
             $table->text('keywords')->nullable();
             $table->unsignedSmallInteger('order');
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(true)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

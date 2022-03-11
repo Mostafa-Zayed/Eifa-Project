@@ -12,37 +12,15 @@
 </head>
 
 <body>
-
     <div class="wrapper">
-
-        <!--=================================
- preloader -->
-
         <div id="pre-loader">
             <img src="{{asset('assets/backend/images/pre-loader/loader-01.svg')}}" alt="">
         </div>
-
-        <!--=================================
- preloader -->
-
         @include('backend.layouts.main-header')
-
         @include('backend.layouts.main-sidebar')
 
-        <!--=================================
- Main content -->
-        <!-- main-content -->
         <div class="content-wrapper">
             <div class="page-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4 class="mb-0"> Dashboard</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
-                        </ol>
-                    </div>
-                </div>
             </div>
             <!-- widgets -->
             <div class="row">
@@ -56,14 +34,11 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Visitors</p>
-                                    <h4>65,650</h4>
+                                    <p class="card-text text-dark">Pages</p>
+                                    <br>
+                                    <h4>{{$pages}}</h4>
                                 </div>
                             </div>
-                            <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fa fa-exclamation-circle mr-1" aria-hidden="true"></i> 81% lower
-                                growth
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -77,13 +52,10 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Orders</p>
-                                    <h4>656</h4>
+                                    <p class="card-text text-dark">Services</p>
+                                    <h4>{{$services}}</h4>
                                 </div>
                             </div>
-                            <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fa fa-bookmark-o mr-1" aria-hidden="true"></i> Total sales
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -97,8 +69,8 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">Revenue</p>
-                                    <h4>$65656</h4>
+                                    <p class="card-text text-dark">Courses</p>
+                                    <h4>{{$courses}}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
@@ -664,21 +636,12 @@
                     </div>
                 </div>
             </div>
-            <!--=================================
- wrapper -->
-
-            <!--=================================
- footer -->
 
             @include('backend.layouts.footer')
         </div><!-- main content wrapper end-->
     </div>
     </div>
     </div>
-
-    <!--=================================
- footer -->
-
     @include('backend.layouts.footer-scripts')
 
 </body>

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Aboutcontroller;
@@ -35,26 +35,32 @@ Route::group(
     ], function(){
 
     // Front home route
-    Route::get('/',[HomeController::class,'index'])->name('home');
-    Route::get('/about',[HomeController::class,'about'])->name('about');
-    Route::get('/services',[HomeController::class,'services'])->name('services');
-    Route::get('/courses',[HomeController::class,'courses'])->name('courses');
-    Route::get('/media',[HomeController::class,'media'])->name('media');
-    Route::get('/blogs',[HomeController::class,'blogs'])->name('blogs');
-    Route::get('/founders',[HomeController::class,'founders'])->name('founders');
-    Route::get('/founder/details/{id}',[HomeController::class,'getFounder'])->name('founder.details');
-    Route::get('/course/details/{id}',[HomeController::class,'getCourse'])->name('course.details');
-    Route::post('/course/register/{id}',[HomeController::class,'courseRegister'])->name('course.register');
-    Route::get('/partners',[HomeController::class,'partners'])->name('partners');
-    Route::get('/contact-us',[HomeController::class,'contact'])->name('contact');
-    Route::post('/send/message',[HomeController::class,'sendMessage'])->name('send.message');
-    Route::get('category/show/{id}',[HomeController::class,'categoryMedia'])->name('category.media');
-    Route::get('/media/{id}',[HomeController::class,'getMedia'])->name('media.getInfo');
-    Route::get('/registration',[HomeController::class,'registration'])->name('registration');
-    Route::post('/register',[HomeController::class,'makeRegister'])->name('makeRegister');
+    Route::get('/',[MainController::class,'index'])->name('home');
+    Route::get('/about',[MainController::class,'about'])->name('about');
+    Route::get('/services',[MainController::class,'services'])->name('services');
+    Route::get('/courses',[MainController::class,'courses'])->name('courses');
+    Route::get('/media',[MainController::class,'media'])->name('media');
+    Route::get('/blogs',[MainController::class,'blogs'])->name('blogs');
+    Route::get('/founders',[MainController::class,'founders'])->name('founders');
+    Route::get('/founder/details/{id}',[MainController::class,'getFounder'])->name('founder.details');
+    Route::get('/course/details/{id}',[MainController::class,'getCourse'])->name('course.details');
+    Route::post('/course/register/{id}',[MainController::class,'courseRegister'])->name('course.register');
+    Route::get('/partners',[MainController::class,'partners'])->name('partners');
+    Route::get('/contact-us',[MainController::class,'contact'])->name('contact');
+    Route::post('/send/message',[MainController::class,'sendMessage'])->name('send.message');
+    Route::get('category/show/{id}',[MainController::class,'categoryMedia'])->name('category.media');
+    Route::get('/media/{id}',[MainController::class,'getMedia'])->name('media.getInfo');
+    Route::get('/registration',[MainController::class,'registration'])->name('registration');
+    Route::post('/register',[MainController::class,'makeRegister'])->name('makeRegister');
+    Route::get('/article/{id}',[MainController::class,'getArticle'])->name('getArticle');
+    Auth::routes(['register' => false]);
+    Route::get('/home', [App\Http\Controllers\MainController::class, 'index'])->name('home');
 
-    Route::get('/article/{id}',[HomeController::class,'getArticle'])->name('getArticle');
-    Route::group([ 'prefix' => 'dashboard'],function(){
+
+
+
+    // dashboard routes
+    Route::group([ 'prefix' => 'dashboard', 'middleware' => ['auth']],function(){
 
         /* dashboard routes */
         Route::get('/',[DashboardController::class,'index'])->name('dashboard.index');
@@ -103,4 +109,8 @@ Route::group(
     });
 
 });
+
+Route::post('ajax/status',[MainController::class,'changeStatus'])->name('change.status');
+
+
 

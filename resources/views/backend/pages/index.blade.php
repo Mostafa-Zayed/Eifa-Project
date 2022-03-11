@@ -7,11 +7,10 @@
         }
     </style>
 @section('title')
-    {{trans('dashboard.pages')}}
+    {{ucwords(trans('dashboard.pages'))}}
 @stop
 @endsection
 @section('page-header')
-    <!-- breadcrumb -->
     <div class="page-title">
         <div class="row">
             <div class="col-sm-6">
@@ -31,7 +30,6 @@
     </div>
 @endsection
 @section('content')
-    <!-- row -->
     <div class="row">
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
@@ -41,30 +39,26 @@
                         <table id="datatable" class="table table-striped table-bordered p-0">
                             <thead>
                             <tr>
-                                <th>#</th>
                                 <th>{{trans('pages.name')}}</th>
                                 <th>{{trans('pages.description')}}</th>
                                 <th>{{trans('pages.order')}}</th>
                                 <th>{{ucwords(trans('dashboard.status'))}}</th>
                                 <th>{{ucwords(trans('dashboard.edit'))}}</th>
                                 <th>{{ucwords(trans('dashboard.delete'))}}</th>
-{{--                                <th>{{trans('dashboard.options')}}</th>--}}
                             </tr>
                             </thead>
                             <tbody>
                             @if(isset($pages) && $pages->count() > 0)
-                                @php $i = 0; @endphp
                                 @foreach($pages as $page)
                                     <tr>
-                                        <td>{{++$i}}</td>
                                         <td>{{ $page->name }}</td>
                                         <td>{{$page->description}}</td>
                                         <td>{{$page->order}}</td>
                                         <td>
                                             @if(! empty($page->status) && $page->status == 1)
-                                                <button type="button" class="btn btn-danger">Not Active</button>
+                                                <button type="button" class="btn btn-danger" data-id="{{$page->id}}" data-value="0" onclick="changeStatus(this,'page')">Not Active</button>
                                             @else
-                                                <button type="button" class="btn btn-success">Active</button>
+                                                <button type="button" class="btn btn-success" data-id="{{$page->id}}" data-value="1" onclick="changeStatus(this,'page')">Active</button>
                                             @endif
                                         </td>
                                         <td>
@@ -83,24 +77,21 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>#</th>
                                 <th>{{trans('pages.name')}}</th>
                                 <th>{{trans('pages.description')}}</th>
                                 <th>{{trans('pages.order')}}</th>
                                 <th>{{ucwords(trans('dashboard.status'))}}</th>
                                 <th>{{ucwords(trans('dashboard.edit'))}}</th>
                                 <th>{{ucwords(trans('dashboard.delete'))}}</th>
-{{--                                <th>{{trans('dashboard.options')}}</th>--}}
                             </tr>
                             </tfoot>
-
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- row closed -->
+
     <div class="modal fade" id="addPageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -112,19 +103,18 @@
                 </div>
                 <form action="{{route('pages.store')}}" method="POST">
                 <div class="modal-body">
-
                         @csrf
                         <div class="row">
                             <div class="col">
                                 <label for="name_ar" class="mr-sm-2">{{ucwords(trans('pages.name_ar'))}} :</label>
-                                <input id="name_ar" type="text" name="name_ar" class="form-control" value="{{old('name_ar')}}">
+                                <input id="name_ar" type="text" name="name_ar" class="form-control mb-2" value="{{old('name_ar')}}" required>
                                 @error('name_ar')
-                                    <span class="alert-danger">{{$message}}</span>
+                                <span class="alert-danger mt-2">{{$message}}</span>
                                 @enderror
                             </div>
                             <div class="col">
                                 <label for="name_en" class="mr-sm-2">{{ ucwords(trans('pages.name_en')) }}   :</label>
-                                <input type="text" class="form-control" name="name_en" value="{{old('name_en')}}">
+                                <input type="text" class="form-control mb-2" name="name_en" value="{{old('name_en')}}" required>
                                 @error('name_en')
                                 <span class="alert-danger">{{$message}}</span>
                                 @enderror
@@ -134,14 +124,14 @@
                         <div class="row">
                             <div class="col">
                                 <label for="description_ar">{{ucwords(trans('pages.description_ar'))}}</label>
-                                <textarea class="form-control" name="description_ar" id="description_ar" rows="3">{{old('description_ar')}}</textarea>
+                                <textarea class="form-control mb-2" name="description_ar" id="description_ar" rows="3">{{old('description_ar')}}</textarea>
                                 @error('description_ar')
                                 <span class="alert-danger">{{$message}}</span>
                                 @enderror
                             </div>
                             <div class="col">
                                 <label for="description_en">{{ucwords(trans('pages.description_en'))}}</label>
-                                <textarea class="form-control" name="description_en" id="description_en" rows="3">{{old('description_en')}}</textarea>
+                                <textarea class="form-control mb-2" name="description_en" id="description_en" rows="3">{{old('description_en')}}</textarea>
                                 @error('description_en')
                                 <span class="alert-danger">{{$message}}</span>
                                 @enderror
@@ -150,7 +140,7 @@
                         <div class="row">
                             <div class="col">
                                 <label class="mr-sm-2">{{ucwords(trans('dashboard.order'))}}</label>
-                                <input type="number" class="form-control" name="order" value="{{old('order')}}">
+                                <input type="number" class="form-control mb-2" name="order" value="{{old('order')}}" required>
                                 @error('order')
                                 <span class="alert-danger">{{$message}}</span>
                                 @enderror
@@ -159,8 +149,21 @@
                     <div class="row">
                         <div class="col">
                             <label class="mr-sm-2">{{ucwords(trans('dashboard.url'))}}</label>
-                            <input type="text" class="form-control" name="url" value="{{old('url')}}">
+                            <input type="url" class="form-control" name="url" value="{{old('url')}}" required>
                             @error('url')
+                            <span class="alert-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label class="mr-sm-2">{{ucwords(trans('dashboard.status'))}}</label>
+                            <select class="form-control" name="status">
+                                <option value="1" selected>{{ucwords(trans('dashboard.active'))}}</option>
+                                <option value="0">{{ucwords(trans('dashboard.not_active'))}}</option>
+                            </select>
+                            @error('status')
                             <span class="alert-danger">{{$message}}</span>
                             @enderror
                         </div>
@@ -176,7 +179,6 @@
     </div>
 @endsection
 @section('js')
-
     @toastr_js
     @toastr_render
     <script>

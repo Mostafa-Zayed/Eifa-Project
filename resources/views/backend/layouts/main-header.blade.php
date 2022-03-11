@@ -32,18 +32,21 @@
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/profile-avatar.jpg" alt="avatar">
+                        <img src="{{asset('assets/backend/images/profile-avatar.jpg')}}" alt="avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Michael Bean</h5>
-                                    <span>michael-bean@mail.com</span>
+                                    <h5 class="mt-0 mb-0">{{auth()->user()->name}}</h5>
+                                    <span>{{auth()->user()->email}}</span>
                                 </div>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" style="cursor: pointer;"><i class="text-danger ti-unlock"></i>Logout</button>
+                        </form>
                     </div>
                 </li>
             </ul>

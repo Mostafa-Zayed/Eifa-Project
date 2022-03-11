@@ -29,7 +29,7 @@
                                     </li>
                                     <li class="nav-item nav-item-header-top-socials d-none d-md-flex justify-content-between h-100">
 													<span class="header-top-button-make-as-appoitment d-inline-flex align-items-center justify-content-center h-100 p-0 align-top">
-														<a href="{{route('courses')}}" class="btn-primary d-flex align-items-center justify-content-center h-100 w-100 text-color-light font-weight-semibold text-decoration-none text-uppercase custom-button-header-top">{{ucwords(trans('dashboard.join_our_training_programs'))}}</a>
+														<a href="{{route('registration')}}" class="btn-primary d-flex align-items-center justify-content-center h-100 w-100 text-color-light font-weight-semibold text-decoration-none text-uppercase custom-button-header-top">{{ucwords(trans('dashboard.join_our_training_programs'))}}</a>
 													</span>
                                     </li>
                                 </ul>

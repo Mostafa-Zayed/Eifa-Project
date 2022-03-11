@@ -15,7 +15,12 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('phone');
+            $table->string('job');
+            $table->string('email');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

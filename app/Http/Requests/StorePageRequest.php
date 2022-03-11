@@ -24,12 +24,13 @@ class StorePageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required',
-            'name_en' => 'required',
+            'name_ar' => 'required|max:255|unique:pages,name',
+            'name_en' => 'required|max:255|unique:pages,name',
             'description_ar' => 'nullable',
             'description_en' => 'nullable',
-            'order' => 'required',
-            'url' => 'required'
+            'status' => 'nullable',
+            'order' => 'required|max:255|unique:pages,order',
+            'url' => 'required|max:255'
         ];
     }
 }

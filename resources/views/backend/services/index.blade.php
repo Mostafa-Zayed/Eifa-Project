@@ -44,6 +44,7 @@
                                 <th>{{trans('services.title')}}</th>
                                 <th>{{trans('services.content')}}</th>
                                 <th>{{trans('dashboard.status')}}</th>
+                                <th>{{ucwords(trans('dashboard.show'))}}</th>
                                 <th>{{trans('dashboard.edit')}}</th>
                                 <th>{{trans('dashboard.delete')}}</th>
                             </tr>
@@ -56,10 +57,13 @@
                                         <td>{{$service->content}}</td>
                                         <td>
                                             @if($service->status == 1)
-                                                <button type="button" class="btn btn-danger" data-id="{{$service->id}}">Not Active</button>
+                                                <button type="button" class="btn btn-danger" data-id="{{$service->id}}" data-value="0" onclick="changeStatus(this,'service')">Not Active</button>
                                             @else
-                                                <button type="button" class="btn btn-success" data-id="{{$service->id}}">Active</button>
+                                                <button type="button" class="btn btn-success" data-id="{{$service->id}}" data-value="1" onclick="changeStatus(this,'service')">Active</button>
                                             @endif
+                                        </td>
+                                        <td>
+                                            show
                                         </td>
                                         <td>
                                             <a class="btn btn-warning" href="{{route('services.edit',$service->id)}}">Edit</a>
@@ -80,6 +84,7 @@
                                 <th>{{trans('services.title')}}</th>
                                 <th>{{trans('services.content')}}</th>
                                 <th>{{trans('dashboard.status')}}</th>
+                                <ht>{{ucwords(trans('dashboard.show'))}}</ht>
                                 <th>{{trans('dashboard.edit')}}</th>
                                 <th>{{trans('dashboard.delete')}}</th>
                             </tr>
@@ -188,7 +193,7 @@
         let i = 1;
         $('#add').click(function(){
             i++;
-            $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="list['+i+'][ar]" id="name" class="form-control border" placeholder="AR"><br><input type="text" name="list['+i+'][en]" id="name" class="form-control border" placeholder="AR"></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn-remove">{{ucwords(trans('dashboard.cancel'))}}</button></td></tr>');
+            $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="list['+i+'][ar]" id="name" class="form-control border" placeholder="AR"><br><input type="text" name="list['+i+'][en]" id="name" class="form-control border" placeholder="EN"></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn-remove">{{ucwords(trans('dashboard.cancel'))}}</button></td></tr>');
         });
 
         $(document).on('click','.btn-remove',function(){

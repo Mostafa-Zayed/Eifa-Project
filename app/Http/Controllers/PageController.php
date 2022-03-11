@@ -57,7 +57,8 @@ class PageController extends Controller
             ],
             'order' => $requestData['order'],
             'keywords' => 'testintg',
-            'url' => $request->url
+            'url' => $request->url,
+            'status' => $request->status
 
         ]);
         toastr()->success('Data has been saved successfully!');
@@ -97,12 +98,12 @@ class PageController extends Controller
     public function update(Request $request, Page $page)
     {
         $request->validate([
-            'name.ar' => 'required',
-            'name.en' => 'required',
+            'name.ar' => 'required|max:255',
+            'name.en' => 'required|max:255',
             'description.ar' => 'nullable',
             'description.en' => 'nullable',
-            'order' => 'required',
-            'url' => 'required'
+            'order' => 'required|max:255|unique:pages,order,'.$page->id,
+            'url' => 'max:255'
         ]);
         if ($page->update($request->all())) {
             toastr()->success('Data has been Update successfully!');
@@ -122,7 +123,7 @@ class PageController extends Controller
     {
         if ($page) {
             $page->delete();
-            toastr()->success('Data has been deleted successfully!');
+            toastr()->success('Data has been deleted successfully');
             return redirect()->route('pages.index');
         }
         toastr()->error('An error has occurred please try again later.');
